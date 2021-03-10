@@ -40,4 +40,10 @@ public class MsgController {
 		service.editMsg(mv);
 		return "redirect:/msg/list";
 	}
+	
+	@RequestMapping("/msg/del")
+	public String del(int num) {
+		service.delMsg(num);;
+		return "redirect:/msg/list";
+	}
 }

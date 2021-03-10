@@ -23,6 +23,6 @@ public interface MsgDao {
 	@Update("update msg set msg=#{msg} where num=#{num}")
 	void update(MsgVo mv);
 	
-	@Delete("delete from msg whrer num=#{num}")
+	@Delete("delete from msg where num=#{num}")
 	void delete(@Param("num") int num);
 }
