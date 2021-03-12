@@ -26,5 +26,9 @@ public class DownFileService {
 	public ArrayList<DownFile> getAll(){
 		return (ArrayList<DownFile>) repos.findAll();
 	}
+	
+	public void cntUpdate(int num) {
+		repos.updateCnt(num);
+	}
 }
 

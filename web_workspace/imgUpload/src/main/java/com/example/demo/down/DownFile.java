@@ -17,18 +17,23 @@ public class DownFile {
 	private String writer;
 	private String content;
 	private String path;
+	private String pwd;
 	private int cnt;
 	
 	@Transient // 테이블 생성에서 제외
 	private MultipartFile file;
 	
 	public DownFile() {	}
-	public DownFile(int num, String title, String writer, String content, String path, int cnt, MultipartFile file) {
+
+	public DownFile(int num, String title, String writer, String content, String path, String pwd, int cnt,
+			MultipartFile file) {
+		super();
 		this.num = num;
 		this.title = title;
 		this.writer = writer;
 		this.content = content;
 		this.path = path;
+		this.pwd = pwd;
 		this.cnt = cnt;
 		this.file = file;
 	}
@@ -73,6 +78,14 @@ public class DownFile {
 		this.path = path;
 	}
 
+	public String getPwd() {
+		return pwd;
+	}
+
+	public void setPwd(String pwd) {
+		this.pwd = pwd;
+	}
+
 	public int getCnt() {
 		return cnt;
 	}
@@ -88,10 +101,10 @@ public class DownFile {
 	public void setFile(MultipartFile file) {
 		this.file = file;
 	}
+	
 	@Override
 	public String toString() {
 		return "DownFile [num=" + num + ", title=" + title + ", writer=" + writer + ", content=" + content + ", path="
-				+ path + ", cnt=" + cnt + ", file=" + file + "]";
+				+ path + ", pwd=" + pwd + ", cnt=" + cnt + ", file=" + file + "]";
 	}
-
 }
