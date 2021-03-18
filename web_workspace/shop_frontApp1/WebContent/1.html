@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+</head>
+<body>
+<div id="a">
+{{obj.id}} / {{obj.pwd}} / {{obj.name}} / {{obj.email}}
+/ {{obj.type.num}} / {{obj.type.name}}
+</div>
+<script type="text/javascript">
+new Vue({
+	el:"#a",
+	data:{
+        obj:null
+	},
+	created: function() {
+        const self = this
+        axios.get('http://localhost:8081/shop-members/aaa')
+          .then(function(response) {
+        	alert(response.status);
+        	alert(response.data.data.id);
+            self.obj = response.data.data;
+    	})
+	}
+})
+</script>
+</body>
+</html>

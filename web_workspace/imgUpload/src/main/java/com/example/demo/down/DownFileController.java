@@ -8,7 +8,7 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.web.ServerProperties.Tomcat.Resource;
+import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,10 +20,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.example.demo.upload.ImgVo;
-
 @Controller
 public class DownFileController {
+
 	private String basePath = "C:\\down\\";
 
 	@Autowired
@@ -62,13 +61,13 @@ public class DownFileController {
 		ArrayList<DownFile> list = service.getAll();
 		m.addAttribute("list", list);
 	}
-	
+
 	@RequestMapping("/down/read")
 	public void read(Model m, int num) {
 		DownFile df = service.getFile(num);
-		m.addAttribute("df",df);
+		m.addAttribute("df", df);
 	}
-	
+
 	@RequestMapping("/down/down")
 	public ResponseEntity<byte[]> down(int num) {
 		DownFile df = service.getFile(num);
@@ -88,11 +87,11 @@ public class DownFileController {
 
 		return result;
 	}
-	
+
 	@RequestMapping("/down/del")
 	public String del(int num) {
 		DownFile df = service.getFile(num);
-		service.delFile(num); // db에서 삭제
+		service.delFile(num);
 		File f = new File(basePath + df.getPath());
 		f.delete();
 		return "redirect:/down/list";

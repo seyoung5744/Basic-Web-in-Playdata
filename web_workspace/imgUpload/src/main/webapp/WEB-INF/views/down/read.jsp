@@ -9,12 +9,12 @@
 function down(){
 	location.href="/down/down?num=${df.num}";
 }
-function del() {
+function del(){
 	var pwd = prompt("글 비밀번호를 입력하라");
-	if(pwd == '${df.pwd}'){	
+	if(pwd=='${df.pwd}'){
 		location.href="/down/del?num=${df.num}";
 	}else{
-		alert("글 비밀번호가 일치하지 않음")
+		alert('글 비밀번호가 일치하지 않음')
 	}
 }
 </script>

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class DownFileService {
+	
 	@Autowired
 	private DownFileRepository repos;
 	
@@ -31,4 +32,3 @@ public class DownFileService {
 		repos.updateCnt(num);
 	}
 }
-

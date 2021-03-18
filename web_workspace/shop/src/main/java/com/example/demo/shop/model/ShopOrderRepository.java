@@ -1,4 +1,4 @@
-package com.example.demo.down;
+package com.example.demo.shop.model;
 
 import javax.transaction.Transactional;
 
@@ -9,10 +9,9 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface DownFileRepository extends JpaRepository<DownFile, Integer> {
-	
+public interface ShopOrderRepository extends JpaRepository<ShopOrder, Integer> {
 	@Transactional
 	@Modifying
-	@Query(value="update DownFile set cnt=cnt+1 where num=:num")
-	void updateCnt(@Param("num") int num);
+	@Query(value="update ShopOrder set pay=true where num=:num")
+	void updatePay(@Param("num") int num);
 }
