@@ -94,7 +94,8 @@ public class ProductController {
 			int cnt = 1;
 			if (files.length > 0) {
 				for (String f : files) {
-					map.put("file" + cnt, "/img/" + num + "/" + f);
+					map.put("file" + cnt, "/products/img/" + num + "/" + f);
+					cnt++;
 				}
 			}
 			map.put("p", p);
@@ -109,6 +110,7 @@ public class ProductController {
 	@GetMapping("/img/{num}/{file}")
 	public ResponseEntity<byte[]> read_img(@PathVariable("num") int num, @PathVariable("file") String file) {
 		String path = basePath + num + "\\" + file;
+		System.out.println(path);
 		File f = new File(path);// 타겟 파일
 		HttpHeaders header = new HttpHeaders();
 		ResponseEntity<byte[]> result = null;

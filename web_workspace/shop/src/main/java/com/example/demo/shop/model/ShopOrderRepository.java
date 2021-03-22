@@ -1,5 +1,7 @@
 package com.example.demo.shop.model;
 
+import java.util.ArrayList;
+
 import javax.transaction.Transactional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -14,4 +16,6 @@ public interface ShopOrderRepository extends JpaRepository<ShopOrder, Integer> {
 	@Modifying
 	@Query(value="update ShopOrder set pay=true where num=:num")
 	void updatePay(@Param("num") int num);
+	
+	ArrayList<ShopOrder> findByConsumer(ShopMember consumer);
 }

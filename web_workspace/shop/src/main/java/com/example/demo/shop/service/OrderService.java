@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.demo.shop.model.ShopMember;
 import com.example.demo.shop.model.ShopOrder;
 import com.example.demo.shop.model.ShopOrderRepository;
 
@@ -41,5 +42,9 @@ public class OrderService {
 			repos.updatePay(num);
 			return true;
 		}
+	}
+	
+	public ArrayList<ShopOrder> getByConsumer(ShopMember consumer){
+		return (ArrayList<ShopOrder>) repos.findByConsumer(consumer);
 	}
 }
